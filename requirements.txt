@@ -1,0 +1,8 @@
+# Streamlit for the frontend UI
+streamlit==1.32.2
+
+# Pandas for handling the "file tables" (CSV/JSON manipulation)
+pandas==2.2.1
+
+# SQLAlchemy (optional, included in case you want to query file tables as SQL later)
+SQLAlchemy==2.0.28

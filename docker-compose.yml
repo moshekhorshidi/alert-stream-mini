@@ -1,0 +1,26 @@
+services:
+  alert-stream-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: alert_stream_mini
+    platform: linux/arm64/v8
+    ports:
+      - "8501:8501"
+    volumes:
+      # Mount the app code for live reloading during development
+      - ./app:/app:cached
+      # Mount the data directory for persistent file tables
+      - ./data:/data:cached
+    environment:
+      - PYTHONUNBUFFERED=1
+      - STREAMLIT_ENV=development
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: '2.0'
+          memory: 4G
+        reservations:
+          cpus: '0.5'
+          memory: 512M
